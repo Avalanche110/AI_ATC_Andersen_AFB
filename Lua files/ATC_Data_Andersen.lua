@@ -266,6 +266,10 @@ AI_ATC_Navpoints = {
     ["y"] = -36543.31640625,
     ["x"] = 180741.234375,
   },
+  ["ILS_9"] = {
+    ["y"] = 152965.09375,
+    ["x"] = 70816.6484375,
+  },
   ["TACAN"] = {
     ["y"] = -8367.933594,
     ["x"] = -341991.437500,
@@ -273,6 +277,34 @@ AI_ATC_Navpoints = {
   ["UAMTCN"] = {
     ["y"] = 16240.711914062,
     ["x"] = 11615.359375,
+  },
+  ["RITIDIAN_POINT"] = {
+      ["y"] = 6842.8842773438,
+      ["x"] = 19019.8359375,
+  },
+  ["POTTS_JUNCTION"] = {
+      ["y"] = 7409.1865234375,
+      ["x"] = 11515.890625,
+  },
+  ["PATI_POINT"] = {
+      ["y"] = 11806.514648438,
+      ["x"] = 14210.6953125,
+  },
+  ["TWO_LOVERS_POINT"] = {
+      ["y"] = 628.82513427734,
+      ["x"] = 3994.6540527344,
+  },
+  ["MT_SANTA_ROSA"] = {
+      ["y"] = 12746.96484375,
+      ["x"] = 5508.69140625,
+  },
+  ["SOUTH_POINT"] = {
+      ["y"] = 12745.65234375,
+      ["x"] = 1802.6904296875,
+  },
+  ["NORTH_POINT"] = { 
+      ["y"] = 6842.8842773438,
+      ["x"] = 19019.8359375,
   },
   ["Andersen AFB"] = {
     ["y"] = 13072.155273438,
@@ -3292,66 +3324,105 @@ Runway_init =
   ["frequency"] = 305,
 }
 
-  
 ApproachSettings = {
   ["06L"] = {
     ["ILS"] = {
       Final      = "LOGLE",
-      Altitude   = "4",
-      PatternAlt = 4000,
-      localiser = 66,
+      Altitude   = "3",
+      PatternAlt = 3000,
+      localiser  = 66,
       Offset = {
-        ["Left"] = "06L",
-        ["Right"] = "06L",
+        ["Left"]  = {
+          --[1] = { Navpoint = "EDIAZ", Heading = "246" },
+          --[2] = { Navpoint = "BRTNE", Heading = "156" },
+          [1] = { Navpoint = "FOKAI", Heading = "246" },
+          [2] = { Navpoint = "SNOYL", Heading = "336" },
+        },
+        ["Right"] = {
+          --[1] = { Navpoint = "FOKAI", Heading = "246" },
+          --[2] = { Navpoint = "SNOYL", Heading = "336" },
+          [1] = { Navpoint = "EDIAZ", Heading = "246" },
+          [2] = { Navpoint = "BRTNE", Heading = "156" },
+        },
       },
       Instruction = "Vector for ILS Runway %s.",
     },
     ["TACAN"] = {
       Final      = "HURUG",
-      Altitude   = "4",
-      PatternAlt = 4000,
-      localiser = 66,
+      Altitude   = "3",
+      PatternAlt = 3000,
+      localiser  = 66,
       Offset = {
-        ["Left"] = "06L",
-        ["Right"] = "06L",
+        ["Left"]  = {
+          --[1] = { Navpoint = "EDIAZ", Heading = "246" },
+          --[2] = { Navpoint = "BRTNE", Heading = "156" },
+          [1] = { Navpoint = "FOKAI", Heading = "246" },
+          [2] = { Navpoint = "SNOYL", Heading = "336" },
+        },
+        ["Right"] = {
+          --[1] = { Navpoint = "FOKAI", Heading = "246" },
+          --[2] = { Navpoint = "SNOYL", Heading = "336" },
+          [1] = { Navpoint = "EDIAZ", Heading = "246" },
+          [2] = { Navpoint = "BRTNE", Heading = "156" },
+        },
       },
       Instruction = "Vectors to the TACAN runway %s.",
     },
-    ["HI-TACAN X"] = {
+    ["HI-TAC X"] = {
       Final      = "HURUG",
-      Altitude   = "4",
-      PatternAlt = 4000,
-      localiser = 66,
+      Altitude   = "3",
+      PatternAlt = 3000,
+      localiser  = 66,
       Instruction = "Cleared for HI-TACAN Yankee runway %s.",
     },
     ["HI-ILS Y"] = {
       Final      = "LOGLE",
-      Altitude   = "4",
-      PatternAlt = 4000,
-      localiser = 66,
+      Altitude   = "3",
+      PatternAlt = 3000,
+      localiser  = 66,
       Instruction = "Cleared HI-ILS approach for runway %s.",
     },
   },
   ["06R"] = {
     ["ILS"] = {
-      Final      = "HILRI",
-      Altitude   = "4",
-      PatternAlt = 4000,
-      localiser = 66,
+      Final      = "LOGLE",
+      Altitude   = "3",
+      PatternAlt = 3000,
+      localiser  = 66,
       Offset = {
-        ["Left"] = "06R",
-        ["Right"] = "06R",
+        ["Left"]  = {
+          --[1] = { Navpoint = "EDIAZ", Heading = "246" },
+          --[2] = { Navpoint = "BRTNE", Heading = "156" },
+          [1] = { Navpoint = "FOKAI", Heading = "246" },
+          [2] = { Navpoint = "SNOYL", Heading = "336" },
+        },
+        ["Right"] = {
+          --[1] = { Navpoint = "FOKAI", Heading = "246" },
+          --[2] = { Navpoint = "SNOYL", Heading = "336" },
+          [1] = { Navpoint = "EDIAZ", Heading = "246" },
+          [2] = { Navpoint = "BRTNE", Heading = "156" },
+        },
       },
       Instruction = "Vector for ILS Runway %s.",
     },
     ["TACAN"] = {
-      Final      = "ADTIN",
-      Altitude   = "4",
-      PatternAlt = 4000,
-      localiser = 246,
+      Final      = "HURUG",
+      Altitude   = "3",
+      PatternAlt = 3000,
+      localiser  = 66,
       Offset = {
-        ["Left"] = "06R",
-        ["Right"] = "06R",
+        ["Left"]  = {
+          --[1] = { Navpoint = "EDIAZ", Heading = "246" },
+          --[2] = { Navpoint = "BRTNE", Heading = "156" },
+          [1] = { Navpoint = "FOKAI", Heading = "246" },
+          [2] = { Navpoint = "SNOYL", Heading = "336" },
+        },
+        ["Right"] = {
+          --[1] = { Navpoint = "FOKAI", Heading = "246" },
+          --[2] = { Navpoint = "SNOYL", Heading = "336" },
+          [1] = { Navpoint = "EDIAZ", Heading = "246" },
+          [2] = { Navpoint = "BRTNE", Heading = "156" },
+        },
       },
       Instruction = "Vectors to the TACAN runway %s.",
     },
@@ -3359,47 +3430,71 @@ ApproachSettings = {
   ["24L"] = {
     ["ILS"] = {
       Final      = "PANNS",
-      Altitude   = "4",
-      PatternAlt = 4000,
-      localiser = 246,
+      Altitude   = "3",
+      PatternAlt = 3000,
+      localiser  = 246,
       Offset = {
-        ["Left"] = "24L",
-        ["Right"] = "24L",
+        ["Left"]  = {
+          [1] = { Navpoint = "BRTNE", Heading = "066" },
+          [2] = { Navpoint = "EDIAZ", Heading = "156" },
+        },
+        ["Right"] = {
+          [1] = { Navpoint = "SNOYL", Heading = "066" },
+          [2] = { Navpoint = "FOKAI", Heading = "336" },
+        },
       },
       Instruction = "Vector for ILS Runway %s.",
     },
     ["TACAN"] = {
       Final      = "WELKU",
-      Altitude   = "4",
-      PatternAlt = 4000,
-      localiser = 246,
+      Altitude   = "3",
+      PatternAlt = 3000,
+      localiser  = 246,
       Offset = {
-        ["Left"] = "24L",
-        ["Right"] = "24L",
+        ["Left"]  = {
+          [1] = { Navpoint = "BRTNE", Heading = "066" },
+          [2] = { Navpoint = "EDIAZ", Heading = "156" },
+        },
+        ["Right"] = {
+          [1] = { Navpoint = "SNOYL", Heading = "066" },
+          [2] = { Navpoint = "FOKAI", Heading = "336" },
+        },
       },
       Instruction = "Vectors to the TACAN runway %s.",
     },
   },
   ["24R"] = {
     ["ILS"] = {
-      Final      = "FABED",
-      Altitude   = "4",
-      PatternAlt = 4000,
-      localiser = 246,
+      Final      = "PANNS",
+      Altitude   = "3",
+      PatternAlt = 3000,
+      localiser  = 246,
       Offset = {
-        ["Left"] = "24R",
-        ["Right"] = "24R",
+        ["Left"]  = {
+          [1] = { Navpoint = "BRTNE", Heading = "066" },
+          [2] = { Navpoint = "EDIAZ", Heading = "156" },
+        },
+        ["Right"] = {
+          [1] = { Navpoint = "SNOYL", Heading = "066" },
+          [2] = { Navpoint = "FOKAI", Heading = "336" },
+        },
       },
       Instruction = "Vector for ILS Runway %s.",
     },
     ["TACAN"] = {
-      Final      = "FOVEM",
-      Altitude   = "4",
-      PatternAlt = 4000,
-      localiser = 246,
+      Final      = "WELKU",
+      Altitude   = "3",
+      PatternAlt = 3000,
+      localiser  = 246,
       Offset = {
-        ["Left"] = "24R",
-        ["Right"] = "24R",
+        ["Left"]  = {
+          [1] = { Navpoint = "BRTNE", Heading = "066" },
+          [2] = { Navpoint = "EDIAZ", Heading = "156" },
+        },
+        ["Right"] = {
+          [1] = { Navpoint = "SNOYL", Heading = "066" },
+          [2] = { Navpoint = "FOKAI", Heading = "336" },
+        },
       },
       Instruction = "Vectors to the TACAN runway %s.",
     },
