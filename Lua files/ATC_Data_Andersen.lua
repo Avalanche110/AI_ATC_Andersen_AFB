@@ -214,6 +214,38 @@ AI_ATC_Navpoints = {
     ["y"] = 23684.017578,
     ["x"] = 17125.384766,
   },
+  ["Alpha"] = {
+    ["y"] = 39457.796875,
+    ["x"] = -72426.484375,
+  },
+  ["Bravo"] = {
+    ["y"] = 21354.544921875,
+    ["x"] = -72291.6953125,
+  },
+  ["Charlie"] = {
+    ["y"] = -32938.140625,
+    ["x"] = -71813.1484375,
+  },
+  ["Delta"] = {
+    ["y"] = -51035.5859375,
+    ["x"] = -71630.6171875,
+  },
+  ["Echo"] = {
+    ["y"] = 83418.671875,
+    ["x"] = 39764.9609375,
+  },
+  ["Foxtrot"] = {
+    ["y"] = 83667.7265625,
+    ["x"] = 63733.37890625,
+  },
+  ["Golf"] = {
+    ["y"] = -86262.1875,
+    ["x"] = 11802.994140625,
+  },
+  ["Hotel"] = {
+    ["y"] = -86598.0625,
+    ["x"] = -15873.521484375,
+  },
   ["06L"] = {
     ["y"] = -6674.556640625,
     ["x"] = 1901.3850097656,
@@ -879,7 +911,7 @@ AI_ATC_TerminalCoordinates = {
     ["Bravo"] = {x = 10955.423880, y = 187.000656, z = 16104.990621},
     ["Charlie"] = {x = 11513.833015, y = 184.000626, z = 16010.609423},
   },
-  ["Juliet"] = {
+  ["Juliett"] = {
     ["Alpha"] = {x = 10044.417042, y = 160.008636, z = 14108.840129},
     ["Charlie"] = {x = 11197.558664, y = 174.034470, z = 15287.293161},
   },
@@ -892,7 +924,7 @@ AI_ATC_TerminalCoordinates = {
   },
   ["Bravo"] = {
     ["Kilo"] = {x = 10955.423880, y = 187.000656, z = 16104.990621},
-    ["Juliet"] = {x = 10664.316185, y = 175.968414, z = 15253.372019},
+    ["Juliett"] = {x = 10664.316185, y = 175.968414, z = 15253.372019},
     ["Golf"] = {x = 10219.612645, y = 163.060150, z = 14343.479946},
     ["Alpha"] = {x = 10046.134095, y = 159.188293, z = 14092.241945},
     ["Hotel"] = {x = 10456.654796, y = 170.000153, z = 14906.812229},
@@ -900,7 +932,7 @@ AI_ATC_TerminalCoordinates = {
   },
   ["Charlie"] = {
     ["Foxtrot"] = {x = 10192.322580, y = 163.999954, z = 12988.517591},
-    ["Juliet"] = {x = 11197.668972, y = 174.035721, z = 15287.506278},
+    ["Juliett"] = {x = 11197.668972, y = 174.035721, z = 15287.506278},
     ["Kilo"] = {x = 11513.564237, y = 184.000626, z = 16010.919157},
     ["Hotel"] = {x = 10938.953249, y = 166.000229, z = 14695.567274},
   },
@@ -3207,6 +3239,16 @@ Generic_Repeater_Coord = {
   x = 10216.331049729,
 }
 
+Range_Coord = {
+  y = 14832.130859375,
+  x = 10228.975585938,
+}
+
+Range_Repeater_Coord = {
+  y = 14836.711914062,
+  x = 10231.052734375,
+}
+
 Runway_init = 
 {
   ["dynSpawnTemplate"] = false,
@@ -3328,110 +3370,143 @@ ApproachSettings = {
   ["06L"] = {
     ["ILS"] = {
       Final      = "LOGLE",
+      Missed     = "FOVEM",
       Altitude   = "3",
       PatternAlt = 3000,
+      Above      = "2.2",
+      AboveAlt   = "2200",
       localiser  = 66,
       Offset = {
         ["Left"]  = {
-          --[1] = { Navpoint = "EDIAZ", Heading = "246" },
-          --[2] = { Navpoint = "BRTNE", Heading = "156" },
           [1] = { Navpoint = "FOKAI", Heading = "246" },
           [2] = { Navpoint = "SNOYL", Heading = "336" },
         },
         ["Right"] = {
-          --[1] = { Navpoint = "FOKAI", Heading = "246" },
-          --[2] = { Navpoint = "SNOYL", Heading = "336" },
           [1] = { Navpoint = "EDIAZ", Heading = "246" },
           [2] = { Navpoint = "BRTNE", Heading = "156" },
         },
       },
       Instruction = "Vector for ILS Runway %s.",
+      Instruction2 = "until established on the localizer. Cleared ILS approach for runway 06L, 17 DME Arc to final."
     },
     ["TACAN"] = {
       Final      = "HURUG",
+      Missed     = "FOVEM",
       Altitude   = "3",
       PatternAlt = 3000,
+      Above      = "2.2",
+      AboveAlt   = "2200",
       localiser  = 66,
       Offset = {
         ["Left"]  = {
-          --[1] = { Navpoint = "EDIAZ", Heading = "246" },
-          --[2] = { Navpoint = "BRTNE", Heading = "156" },
           [1] = { Navpoint = "FOKAI", Heading = "246" },
           [2] = { Navpoint = "SNOYL", Heading = "336" },
         },
         ["Right"] = {
-          --[1] = { Navpoint = "FOKAI", Heading = "246" },
-          --[2] = { Navpoint = "SNOYL", Heading = "336" },
           [1] = { Navpoint = "EDIAZ", Heading = "246" },
           [2] = { Navpoint = "BRTNE", Heading = "156" },
         },
       },
       Instruction = "Vectors to the TACAN runway %s.",
+      Instruction2 = "until established on the TACAN final, Cleared for the approach."
     },
     ["HI-TAC X"] = {
       Final      = "HURUG",
+      Missed     = "FOVEM",
       Altitude   = "3",
       PatternAlt = 3000,
+      Above      = "2.2",
+      AboveAlt   = "2200",
       localiser  = 66,
       Instruction = "Cleared for HI-TACAN Yankee runway %s.",
+      Instruction2 = "17 DME Arc to final, Cleared for the approach."
     },
     ["HI-ILS Y"] = {
       Final      = "LOGLE",
+      Missed     = "FOVEM",
       Altitude   = "3",
       PatternAlt = 3000,
+      Above      = "2.2",
+      AboveAlt   = "2200",
       localiser  = 66,
       Instruction = "Cleared HI-ILS approach for runway %s.",
+      Instruction2 = "17 DME Arc to final. Cleared ILS approach for runway 06L."
     },
   },
   ["06R"] = {
     ["ILS"] = {
       Final      = "LOGLE",
+      Missed     = "FOVEM",
       Altitude   = "3",
       PatternAlt = 3000,
+      Above      = "2.1",
+      AboveAlt   = "2100",
       localiser  = 66,
       Offset = {
         ["Left"]  = {
-          --[1] = { Navpoint = "EDIAZ", Heading = "246" },
-          --[2] = { Navpoint = "BRTNE", Heading = "156" },
           [1] = { Navpoint = "FOKAI", Heading = "246" },
           [2] = { Navpoint = "SNOYL", Heading = "336" },
         },
         ["Right"] = {
-          --[1] = { Navpoint = "FOKAI", Heading = "246" },
-          --[2] = { Navpoint = "SNOYL", Heading = "336" },
           [1] = { Navpoint = "EDIAZ", Heading = "246" },
           [2] = { Navpoint = "BRTNE", Heading = "156" },
         },
       },
       Instruction = "Vector for ILS Runway %s.",
+      Instruction2 = "17 DME Arc to final, Cleared for the approach."
     },
     ["TACAN"] = {
       Final      = "HURUG",
+      Missed     = "FOVEM",
       Altitude   = "3",
       PatternAlt = 3000,
+      Above      = "2.2",
+      AboveAlt   = "2200",
       localiser  = 66,
       Offset = {
         ["Left"]  = {
-          --[1] = { Navpoint = "EDIAZ", Heading = "246" },
-          --[2] = { Navpoint = "BRTNE", Heading = "156" },
           [1] = { Navpoint = "FOKAI", Heading = "246" },
           [2] = { Navpoint = "SNOYL", Heading = "336" },
         },
         ["Right"] = {
-          --[1] = { Navpoint = "FOKAI", Heading = "246" },
-          --[2] = { Navpoint = "SNOYL", Heading = "336" },
           [1] = { Navpoint = "EDIAZ", Heading = "246" },
           [2] = { Navpoint = "BRTNE", Heading = "156" },
         },
       },
       Instruction = "Vectors to the TACAN runway %s.",
+      Instruction2 = "until established on the TACAN final, Cleared for the approach."
+    },
+    ["HI-TAC X"] = {
+      Final      = "HURUG",
+      Missed     = "FOVEM",
+      Altitude   = "3",
+      PatternAlt = 3000,
+      Above      = "2.2",
+      AboveAlt   = "2200",
+      localiser  = 66,
+      Instruction = "Cleared for HI-TACAN approach runway %s.",
+      Instruction2 = "17 DME Arc to final, Cleared for the approach."
+    },
+    ["HI-ILS Y"] = {
+      Final      = "LOGLE",
+      Missed     = "FOVEM",
+      Altitude   = "3",
+      PatternAlt = 3000,
+      Above      = "2.2",
+      AboveAlt   = "2200",
+      localiser  = 66,
+      Instruction = "Cleared HI-ILS approach for runway %s.",
+      Instruction2 = "17 DME Arc to final. Cleared ILS approach for runway 06R."
     },
   },
   ["24L"] = {
     ["ILS"] = {
       Final      = "PANNS",
+      Missed     = "PANNS",
       Altitude   = "3",
       PatternAlt = 3000,
+      Above      = "2.2",
+      AboveAlt   = "2200",
       localiser  = 246,
       Offset = {
         ["Left"]  = {
@@ -3444,11 +3519,15 @@ ApproachSettings = {
         },
       },
       Instruction = "Vector for ILS Runway %s.",
+      Instruction2 = "until established on the localizer. Cleared ILS approach for runway 24L.",
     },
     ["TACAN"] = {
       Final      = "WELKU",
+      Missed     = "WELKU",
       Altitude   = "3",
       PatternAlt = 3000,
+      Above      = "2.2",
+      AboveAlt   = "2200",
       localiser  = 246,
       Offset = {
         ["Left"]  = {
@@ -3461,13 +3540,17 @@ ApproachSettings = {
         },
       },
       Instruction = "Vectors to the TACAN runway %s.",
+      Instruction2 = "until established on the TACAN final, Cleared for the approach."
     },
   },
   ["24R"] = {
     ["ILS"] = {
       Final      = "PANNS",
+      Missed     = "PANNS",
       Altitude   = "3",
       PatternAlt = 3000,
+      Above      = "2.2",
+      AboveAlt   = "2200",
       localiser  = 246,
       Offset = {
         ["Left"]  = {
@@ -3480,11 +3563,15 @@ ApproachSettings = {
         },
       },
       Instruction = "Vector for ILS Runway %s.",
+      Instruction2 = "until established on the localizer. Cleared ILS approach for runway 24L.",
     },
     ["TACAN"] = {
       Final      = "WELKU",
+      Missed     = "WELKU",
       Altitude   = "3",
       PatternAlt = 3000,
+      Above      = "2.2",
+      AboveAlt   = "2200",
       localiser  = 246,
       Offset = {
         ["Left"]  = {
@@ -3497,6 +3584,7 @@ ApproachSettings = {
         },
       },
       Instruction = "Vectors to the TACAN runway %s.",
+      Instruction2 = "until established on the TACAN final, Cleared for the approach."
     },
   },
 }
