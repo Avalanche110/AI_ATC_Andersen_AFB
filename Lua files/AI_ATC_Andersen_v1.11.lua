@@ -5550,10 +5550,9 @@ function AI_ATC:GroundController(Debug)
                 data.Subtitle = string.format("%s is %s in spot %s", alias, data.State, data.Spot or "Unknown")
   
                 if client and client.State ~= "Parked" then
-                  AI_ATC:RepeatLastTransmission(alias, nil)
+                  client.State = "Parked"
+                  --AI_ATC:RepeatLastTransmission(alias, nil)
                   AI_ATC:UpdateClient(alias, false)
-                  client.State        = "Parked"
-                  data.CurrentTaxiway = data.Taxi and data.Taxi[1]
                   if ATM.TaxiQueue[alias] then
                     ATM.TaxiQueue[alias] = nil
                   end
