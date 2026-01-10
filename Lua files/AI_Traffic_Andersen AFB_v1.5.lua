@@ -139,6 +139,7 @@ local ManeuverTemplates = {}
 AI_Traffic.TrafficParking = {
   ["A-10C_2"]       = { 150, 151, 152, 153 },
   ["AV8BNA"]        = { 150, 151, 152, 153 },
+  ["A6E"]           = { 138, 139, 140, 141 },
   ["F-14B"]         = { 109, 110, 80, 81 },
   ["F-15C"]         = { 22, 21, 18, 17 },
   ["F-15ESE"]       = { 76, 75, 74, 73 },
@@ -164,7 +165,7 @@ function AI_Traffic:SpawnDeparture()
     ManeuverTbl      = { "AI_Andersen_Departure_24L" }
   end
 
-  local FighterTemplate  = { "A-10C-II","AV-8B", "F-14B", "F-15C","F-15E","F-16C","F-4E","F-5E","F/A-18C","M-2000C","MB-339A","Tornado" }
+  local FighterTemplate  = { "A-10C-II","AV-8B", "A-6E", "F-14B", "F-15C","F-15E","F-16C","F-4E","F-5E","F/A-18C","M-2000C","MB-339A","Tornado" }
   local HeavyTemplate    = { "C-17A","C-130","KC-135","B-52","B-1B" }
 
   local Grpng, SpawnTable, SpawnState, RandomTemplate, SchedulerObject
@@ -215,25 +216,25 @@ function AI_Traffic:SpawnDeparture()
 
   local DonorName = Maneuver
 
-  --local donorTemplate = AI_Traffic_Templates[DonorName]
-  --if not donorTemplate or not donorTemplate.route then
-    --env.info(string.format("[AI_TRAFFIC] Bad donor template/route: %s", tostring(DonorName)))
+  local donorTemplate = AI_Traffic_Templates[DonorName]
+  if not donorTemplate or not donorTemplate.route then
+    env.info(string.format("[AI_TRAFFIC] Bad donor template/route: %s", tostring(DonorName)))
+    SCHEDULER:New(nil, function() AI_Traffic:SpawnDeparture() end, {}, 2)
+    return
+  end
+      
+  --local donorGrp = GROUP:FindByName(Maneuver)
+  --if not donorGrp then
+    --env.info(string.format("[SPAWN-APP] Missing donor group: %s", tostring(Maneuver)))
     --SCHEDULER:New(nil, function() AI_Traffic:SpawnDeparture() end, {}, 2)
     --return
   --end
-      
-  local donorGrp = GROUP:FindByName(Maneuver)
-  if not donorGrp then
-    env.info(string.format("[SPAWN-APP] Missing donor group: %s", tostring(Maneuver)))
-    SCHEDULER:New(nil, function() AI_Traffic:SpawnDeparture() end, {}, 2)
-    return
-  end
-  local donorTemplate = donorGrp:GetTemplate()
-  if not donorTemplate then
-    env.info(string.format("[SPAWN-APP] Bad donor template: %s", tostring(Maneuver)))
-    SCHEDULER:New(nil, function() AI_Traffic:SpawnDeparture() end, {}, 2)
-    return
-  end
+  --local donorTemplate = donorGrp:GetTemplate()
+  --if not donorTemplate then
+    --env.info(string.format("[SPAWN-APP] Bad donor template: %s", tostring(Maneuver)))
+    --SCHEDULER:New(nil, function() AI_Traffic:SpawnDeparture() end, {}, 2)
+    --return
+  --end
   
   template.route = donorTemplate.route
 
@@ -326,30 +327,36 @@ function AI_Traffic:SpawnApproach()
       RunwayHeading = 066
       SpawnHeading = 176
       ManeuverTbl = {
-        "AI_Overhead_06L", "AI_Outside Downwind_06L", "AI_Straight in_06L", "AI_B2R_06L", "AI_Missed Approach_06L",
-        "AI_Overhead_06L-2", "AI_Outside Downwind_06L-2", "AI_Straight in_06L-2", "AI_B2R_06L-2", "AI_Missed Approach_06L-2"
+        "AI_Outside Downwind_06L", "AI_Straight in_06L", "AI_B2R_06L", "AI_Missed Approach_06L",
+        "AI_Outside Downwind_06L-2", "AI_Straight in_06L-2", "AI_B2R_06L-2", "AI_Missed Approach_06L-2",
+        --"AI_Overhead_06L",
+        --"AI_Overhead_06L-2",
       }
     elseif Runway=="06R" then
       RunwayHeading = 066
       SpawnHeading = 326
       ManeuverTbl = {
-        "AI_Overhead_06R", "AI_Outside Downwind_06R", "AI_Straight in_06R", "AI_B2R_06R", "AI_Missed Approach_06R",
-        "AI_Overhead_06R-2", "AI_Outside Downwind_06R-2", "AI_Straight in_06R-2", "AI_B2R_06R-2", "AI_Missed Approach_06R-2",
+        "AI_Outside Downwind_06R", "AI_Straight in_06R", "AI_B2R_06R", "AI_Missed Approach_06R",
+        "AI_Outside Downwind_06R-2", "AI_Straight in_06R-2", "AI_B2R_06R-2", "AI_Missed Approach_06R-2",
+        --"AI_Overhead_06R",
+        --"AI_Overhead_06R-2",
       }
     else
       RunwayHeading = 246
       SpawnHeading = 064
       ManeuverTbl = {
-        "AI_Overhead_24L", "AI_Outside Downwind_24L", "AI_Straight in_24L", "AI_B2R_24L", "AI_Missed Approach_24L",
-        "AI_Overhead_24L-2", "AI_Outside Downwind_24L-2", "AI_Straight in_24L-2", "AI_B2R_24L-2", "AI_Missed Approach_24L-2"
+        "AI_Outside Downwind_24L", "AI_Straight in_24L", "AI_B2R_24L", "AI_Missed Approach_24L",
+        "AI_Outside Downwind_24L-2", "AI_Straight in_24L-2", "AI_B2R_24L-2", "AI_Missed Approach_24L-2"
+        --"AI_Overhead_24L",
+        --"AI_Overhead_24L-2",
       }
     end
   end
-  local FighterTemplate = { "A-10C-II","AV-8B","F-15C","F-15E","F-16C","F-5E","F/A-18C","M-2000C","MB-339A","Tornado" }
-  local TwoShipTemplate = { "A-10C-II-2","AV-8B-2","F-15C-2","F-15E-2","F-16C-2","F-5E-2","F/A-18C-2","M-2000C-2","MB-339A-2","Tornado-2" }
+  local FighterTemplate = { "A-10C-II","AV-8B","A-6E","F-15C","F-15E","F-16C","F-5E","F/A-18C","M-2000C","MB-339A","Tornado" }
+  local TwoShipTemplate = { "A-10C-II-2","AV-8B-2","A-6E-2","F-15C-2","F-15E-2","F-16C-2","F-5E-2","F/A-18C-2","M-2000C-2","MB-339A-2","Tornado-2" }
   local HeavyTemplate   = { "C-17A","C-130","KC-135","B-52","B-1B" }
 
-
+  AI_Traffic.Approach = AI_Traffic.Approach or {}
   AI_Traffic.Approach.PreviousManeuver = AI_Traffic.Approach.PreviousManeuver or nil
 
   local function baseManeuver(name) return (name:gsub("%-2$", "")) end
