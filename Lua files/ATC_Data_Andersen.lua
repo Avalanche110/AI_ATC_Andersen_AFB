@@ -9,6 +9,8 @@ Marianas_Airfields = {
   "Tinian Intl",
 }
 
+AI_ATC_Airfields = Marianas_Airfields
+
 AI_ATC_Navpoints = {
   ["WEVUS"] = {
     ["y"] = 16271.789062,
